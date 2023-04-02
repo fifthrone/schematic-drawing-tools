@@ -17,7 +17,7 @@ import CouplerNode, {
 } from "../../components/nodes/coupler-node";
 import OmniNode from "../../components/nodes/omni-node";
 import HybridNode from "../../components/nodes/hybrid-node";
-import FeederEdge from "../../components/edges/feeder-edge";
+import FeederEdge, {defaultFeederEdgeData} from "../../components/edges/feeder-edge";
 import PanelNode from "../../components/nodes/panel-node";
 import FromBTSNode from "../../components/nodes/from-bts-node";
 
@@ -154,12 +154,12 @@ function Page() {
     save();
   }, [nodes, edges, viewport]);
 
-  // console.log({ nodes, edges });
+  console.log({ nodes, edges });
   return (
     <ReactFlowProvider>
-      <div className="grid h-screen w-screen grid-cols-6 bg-white">
-        <SidePanel className="bg-gray-200 text-black" />
-        <div className="col-span-5 h-full w-full" ref={reactFlowWrapper}>
+      <div className="flex flex-row w-screen h-screen bg-white">
+        <SidePanel className="bg-gray-200 w-40 xl:w-72 h-screen text-black flex-shrink-0" />
+        <div className="h-full w-full" ref={reactFlowWrapper}>
           <ReactFlow
             nodes={nodes}
             edges={edges}
@@ -172,7 +172,9 @@ function Page() {
             fitView
             nodeTypes={nodeTypes}
             edgeTypes={edgeTypes}
-            defaultEdgeOptions={{ type: "smoothstep" }}
+            defaultEdgeOptions={{ type: "feeder", data: defaultFeederEdgeData }}
+            minZoom={0.1}
+            maxZoom={10}
           >
             <Controls />
             <Background color="#6F6F6F" variant="dots" />

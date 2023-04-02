@@ -1,18 +1,39 @@
 import { getSmoothStepPath } from "reactflow";
+import useStore from "../../store";
+import { shallow } from "zustand/shallow";
 
 const foreignObjectSize = 40;
 
-export default function FeederEdge({
-  id,
-  sourceX,
-  sourceY,
-  targetX,
-  targetY,
-  sourcePosition,
-  targetPosition,
-  style = {},
-  markerEnd,
-}) {
+const defaultFeederEdgeData = {
+  feederId: "S0",
+  feederLength: 1,
+  feederType: "LDF4",
+};
+
+const selector = (state) => ({
+  updateEdgeFeederId: state.updateEdgeFeederId,
+  updateEdgeFeederLength: state.updateEdgeFeederLength,
+});
+
+export default function FeederEdge(props) {
+  const {
+    id,
+    data,
+    sourceX,
+    sourceY,
+    targetX,
+    targetY,
+    sourcePosition,
+    targetPosition,
+    style = {},
+    markerEnd,
+  } = props;
+
+  const { updateEdgeFeederId, updateEdgeFeederLength } = useStore(
+    selector,
+    shallow
+  );
+
   const [edgePath, labelX, labelY] = getSmoothStepPath({
     sourceX,
     sourceY,
@@ -43,16 +64,16 @@ export default function FeederEdge({
           <input
             className="nodrag w-14 bg-transparent text-center"
             type="text"
-            value="S1.1"
-            onChange={(e) => updateNodeCouplerId(id, e.target.value)}
+            value={data.feederId}
+            onChange={(e) => updateEdgeFeederId(id, e.target.value)}
           />
           <div className="flex flex-row">
-            <p>LDF4</p>
+            <p>{data.feederType}</p>
             <input
               className="nodrag w-6 bg-transparent text-center"
-              type="text"
-              value="20"
-              onChange={(e) => updateNodeCouplerLoss(id, e.target.value)}
+              type="number"
+              value={data.feederLength}
+              onChange={(e) => updateEdgeFeederLength(id, e.target.value)}
             />
             <p>m</p>
           </div>
@@ -61,3 +82,5 @@ export default function FeederEdge({
     </>
   );
 }
+
+export { defaultFeederEdgeData };

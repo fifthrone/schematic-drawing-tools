@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import useStore from "../../store";
 import { shallow } from "zustand/shallow";
+import { defaultCouplerNodeData } from "./coupler-node";
 
 const selector = (state) => ({
   nodes: state.nodes,
@@ -147,10 +148,7 @@ function AddMenu({ className, portType, xPos, yPos, id }) {
                     x: xPos + 250,
                     y: yPos + 150,
                   },
-            data: {
-              couplerId: "C0",
-              couplerLoss: 10,
-            },
+            data: defaultCouplerNodeData,
             selected: true,
           });
           addEdge({

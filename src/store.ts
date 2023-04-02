@@ -35,6 +35,8 @@ type RFState = {
   updateNodeCouplerLoss: (nodeId: string, couplerId: number) => void;
   updateNodeOmniId: (nodeId: string, omniId: string) => void;
   updateNodeHybridId: (nodeId: string, hybridId: string) => void;
+  updateEdgeFeederId: (edgeId: string, feederId: string) => void;
+  updateEdgeFeederLength: (edgeId: string, feederLength: number) => void;
 };
 
 // this is our useStore hook that we can use in our components to get parts of the store and call actions
@@ -143,6 +145,30 @@ const useStore = create<RFState>((set, get) => ({
           node.data = { ...node.data, hybridId };
         }
         return node;
+      }),
+    });
+  },
+  updateEdgeFeederId: (edgeId: string, feederId: string) => {
+    set({
+      edges: get().edges.map((edge) => {
+        if (edge.id === edgeId) {
+          edge.data = { ...edge.data, feederId };
+        }
+        return edge;
+      }),
+    });
+  },
+  updateEdgeFeederLength: (edgeId: string, feederLength: number) => {
+    set({
+      edges: get().edges.map((edge) => {
+        console.log(edge);
+        
+        if (edge.id === edgeId) {
+          edge.data = { ...edge.data, feederLength };
+          console.log({ ...edge.data, feederLength });
+          
+        }
+        return edge;
       }),
     });
   },

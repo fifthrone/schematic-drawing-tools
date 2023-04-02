@@ -16,6 +16,7 @@ import flipXIcon from "../../../public/flipX.png";
 import flipYIcon from "../../../public/flipY.png";
 import rotateIcon from "../../../public/rotate.png";
 import { getAdjustedPosition } from "../../utils/utils";
+import { defaultFeederEdgeData } from "../edges/feeder-edge";
 
 const defaultCouplerNodeData = {
   couplerId: "C0",
@@ -104,7 +105,7 @@ function CouplerNode(props) {
         <div className="flex flex-row">
           <input
             className="nodrag w-6 bg-transparent text-center"
-            type="text"
+            type="number"
             value={data.couplerLoss}
             onChange={(e) => updateNodeCouplerLoss(id, e.target.value)}
           />
@@ -195,7 +196,7 @@ function CouplerNode(props) {
           )}
           offset={(data.rotation/90) % 2 === 0 ? 10 : 12}
         >
-          <button className="group flex h-6 w-6 items-center justify-center rounded-full border border-neutral-400 bg-white text-xl text-black">
+          <div className="group flex h-6 w-6 items-center justify-center rounded-full border border-neutral-400 bg-white text-xl text-black">
             +
             <div className="hidden group-hover:block">
               <AddMenu
@@ -206,7 +207,7 @@ function CouplerNode(props) {
                 className="absolute top-1/2 left-0 -translate-y-1/2"
               />
             </div>
-          </button>
+          </div>
         </NodeToolbar>
       ) : null}
 
@@ -276,6 +277,7 @@ function AddMenu({ className, portType, xPos, yPos, id }) {
           });
           addEdge({
             id: newEdgeId,
+            data: defaultFeederEdgeData,
             source: id,
             sourceHandle: portType === "direct" ? "direct" : "coupling",
             target: newNodeId,
@@ -312,6 +314,7 @@ function AddMenu({ className, portType, xPos, yPos, id }) {
           });
           addEdge({
             id: newEdgeId,
+            data: defaultFeederEdgeData,
             source: id,
             sourceHandle: portType === "direct" ? "direct" : "coupling",
             target: newNodeId,
@@ -347,6 +350,7 @@ function AddMenu({ className, portType, xPos, yPos, id }) {
           });
           addEdge({
             id: newEdgeId,
+            data: defaultFeederEdgeData,
             source: id,
             sourceHandle: portType === "direct" ? "direct" : "coupling",
             target: newNodeId,
@@ -382,6 +386,7 @@ function AddMenu({ className, portType, xPos, yPos, id }) {
           });
           addEdge({
             id: newEdgeId,
+            data: defaultFeederEdgeData,
             source: id,
             sourceHandle: portType === "direct" ? "direct" : "coupling",
             target: newNodeId,
