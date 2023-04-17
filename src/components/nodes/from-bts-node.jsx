@@ -6,9 +6,7 @@ import useStore from "../../store";
 function FromBTSNode({ id, data }) {
   return (
     <div className="relative flex h-20 w-20 flex-col items-center justify-center border border-black p-4 text-black">
-      <p>From</p>
-      <p>BTS</p>
-      <p>side</p>
+      <p>Input</p>
 
       <Handle type="source" id="1" position={Position.Right} className="top-0" />
       <Handle type="source" id="2" position={Position.Right} className="" />

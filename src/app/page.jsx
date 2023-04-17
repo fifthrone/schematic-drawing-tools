@@ -14,16 +14,16 @@ import "reactflow/dist/style.css";
 
 import CouplerNode, {
   defaultCouplerNodeData,
-} from "../../components/nodes/coupler-node";
-import OmniNode from "../../components/nodes/omni-node";
-import HybridNode from "../../components/nodes/hybrid-node";
-import FeederEdge, {defaultFeederEdgeData} from "../../components/edges/feeder-edge";
-import PanelNode from "../../components/nodes/panel-node";
-import FromBTSNode from "../../components/nodes/from-bts-node";
+} from "../components/nodes/coupler-node";
+import OmniNode from "../components/nodes/omni-node";
+import HybridNode from "../components/nodes/hybrid-node";
+import FeederEdge, {defaultFeederEdgeData} from "../components/edges/feeder-edge";
+import PanelNode from "../components/nodes/panel-node";
+import FromBTSNode from "../components/nodes/from-bts-node";
 
-import SidePanel from "../../components/side-panel";
+import SidePanel from "../components/side-panel";
 
-import useStore from "../../store";
+import useStore from "../store";
 import { shallow } from "zustand/shallow";
 
 import { v4 as uuidv4 } from "uuid";
@@ -154,7 +154,7 @@ function Page() {
     save();
   }, [nodes, edges, viewport]);
 
-  console.log({ nodes, edges });
+  // console.log({ nodes, edges });
   return (
     <ReactFlowProvider>
       <div className="flex flex-row w-screen h-screen bg-white">
