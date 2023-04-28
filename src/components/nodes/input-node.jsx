@@ -3,7 +3,7 @@ import { Handle, Position } from "reactflow";
 
 import useStore from "../../store";
 
-function FromBTSNode({ id, data }) {
+function InputNode({ id, data }) {
 	return (
 		<div className="relative flex h-20 w-20 flex-col items-center justify-center border border-black p-4 text-black">
 			<p>Input</p>
@@ -42,4 +42,4 @@ function FromBTSNode({ id, data }) {
 	);
 }
 
-export default memo(FromBTSNode);
+export default memo(InputNode);

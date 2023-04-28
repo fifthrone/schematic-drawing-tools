@@ -19,7 +19,7 @@ import OmniNode from "../components/nodes/omni-node";
 import HybridNode from "../components/nodes/hybrid-node";
 import FeederEdge, {defaultFeederEdgeData} from "../components/edges/feeder-edge";
 import PanelNode from "../components/nodes/panel-node";
-import FromBTSNode from "../components/nodes/from-bts-node";
+import InputNode from "../components/nodes/input-node";
 
 import SidePanel from "../components/side-panel";
 
@@ -48,7 +48,7 @@ const nodeTypes = {
   omni: OmniNode,
   hybrid: HybridNode,
   panel: PanelNode,
-  fromBTS: FromBTSNode,
+  fromBTS: InputNode,
 };
 const edgeTypes = {
   feeder: FeederEdge,
@@ -57,7 +57,7 @@ const edgeTypes = {
 const defaultOmniNodeData = { omniId: "0" };
 const defaultHybridNodeData = { hybridId: "C0" };
 const defaultPanelNodeData = { panelId: "0" };
-const defaultFromBTSNodeData = {};
+const defaultInputNodeData = {};
 
 function Page() {
   const reactFlowWrapper = useRef(null);
@@ -107,7 +107,7 @@ function Page() {
           : type === "panel"
           ? defaultPanelNodeData
           : type === "fromBTS"
-          ? defaultFromBTSNodeData
+          ? defaultInputNodeData
           : { label: 0 };
 
       const newNode = {

@@ -91,7 +91,7 @@ function SidePanel({ className }) {
 					</div>
 					<h2 className="text-sm">Input</h2>
 				</div>
-				<div
+				{/* <div
 					className="flex flex-col items-center justify-center space-y-1 rounded-lg border border-neutral-400 p-2 duration-300 hover:bg-white"
 					onDragStart={(event) => onDragStart(event, "splitter")}
 					draggable
@@ -104,7 +104,7 @@ function SidePanel({ className }) {
 					draggable
 				>
 					<h2 className="text-sm">Donor</h2>
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);
